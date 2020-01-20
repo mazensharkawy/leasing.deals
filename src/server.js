@@ -1,4 +1,21 @@
+const SERVER_URL = "https://leasing.deals/get-all-deals";
 export default class Server {
+  static async getLeasesData() {
+    try {
+      const leasesData = await this.send({
+        url: SERVER_URL,
+        data: {
+          type: "personal",
+          modelID: "x2 xdrive18 suv",
+          page: "1"
+        }
+      });
+      return leasesData;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
   static async send({ url, data }) {
     console.log({ url, data });
     let payload = {
