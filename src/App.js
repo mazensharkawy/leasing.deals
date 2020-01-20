@@ -4,6 +4,7 @@ import "./App.css";
 import Server from "./server";
 import _ from "lodash";
 import LeaseCard from "./components/LeaseCard";
+import CardsContainer from "./components/CardsContainer";
 class App extends React.Component {
   state = {};
   async componentDidMount() {
@@ -12,8 +13,7 @@ class App extends React.Component {
   }
   render() {
     const { leaseData } = this.state;
-    console.log({ leaseData });
-    return <div>{_.map(_.take(leaseData, 20), lease => LeaseCard(lease))}</div>;
+    return <CardsContainer leases={leaseData} />;
   }
 }
 
