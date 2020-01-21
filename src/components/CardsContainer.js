@@ -5,27 +5,52 @@ import { Button } from "evergreen-ui";
 import LeaseCard from "./LeaseCard";
 import Filters from "./Filters";
 const CARDS_PER_PAGE = 20;
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 class CardsContainer extends Component {
   state = {
     currentPage: 0,
     filteredLeases: this.props.leases
   };
   renderPagesButton = () => {
-    const { filteredLeases } = this.state;
+    const { filteredLeases, currentPage } = this.state;
     if (!filteredLeases) return;
     let numberOfPages = Math.ceil(filteredLeases.length / CARDS_PER_PAGE);
     let output = [];
     if (numberOfPages <= 1) return [];
-    for (let i = 0; i < numberOfPages; i++) {
+    const lowestPageWindow = Math.floor(currentPage / 5) * 5;
+    const highestPageWindow = Math.floor(currentPage / 5) * 5 + 5;
+    output.push(
+      <Button
+        key={"pageButton >"}
+        disabled={currentPage < 5}
+        onClick={() => this.setState({ currentPage: currentPage - 5 })}
+      >
+        {"<"}
+      </Button>
+    );
+    for (let i = lowestPageWindow; i < highestPageWindow; i++) {
       output.push(
         <Button
           key={"pageButton " + i}
+          appearance={currentPage === i && "primary"}
           onClick={() => this.setState({ currentPage: i })}
         >
           {i + 1}
         </Button>
       );
     }
+    output.push(
+      <Button
+        key={"pageButton >"}
+        disabled={currentPage > numberOfPages - 5}
+        onClick={() => this.setState({ currentPage: currentPage + 5 })}
+      >
+        {">"}
+      </Button>
+    );
     return output;
   };
   componentDidUpdate(prevProps) {
@@ -47,7 +72,9 @@ class CardsContainer extends Component {
             LeaseCard(lease)
           )}
         </div>
-        <div>{this.renderPagesButton()}</div>
+        <Pagination>
+          <div>{this.renderPagesButton()}</div>
+        </Pagination>
       </div>
     );
   }
