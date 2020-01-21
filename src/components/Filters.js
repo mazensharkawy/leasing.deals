@@ -8,6 +8,17 @@ const HeaderContainer = styled.div`
   justify-content: space-around;
   background: #f5f5f5;
 `;
+const Select = styled.select`
+  background: white;
+  min-width: 150px;
+  height: 30px;
+`;
+const Input = styled.input`
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+`;
 class Filters extends Component {
   state = {};
   handleChange = ({ target }) => {
@@ -31,7 +42,7 @@ class Filters extends Component {
     const { higherRange, lowerRange, engine_type, transmission } = this.state;
     return (
       <HeaderContainer>
-        <select
+        <Select
           name="transmission"
           value={transmission}
           onChange={this.handleChange}
@@ -39,8 +50,8 @@ class Filters extends Component {
           <option value="">All transmissions</option>
           <option value="Automatic">Automatic</option>
           <option value="Manual">Manual</option>
-        </select>
-        <select
+        </Select>
+        <Select
           name="engine_type"
           value={engine_type}
           onChange={this.handleChange}
@@ -48,16 +59,16 @@ class Filters extends Component {
           <option value="">All engine types</option>
           <option value="Diesel">Diesel</option>
           <option value="Petrol">Petrol</option>
-        </select>
+        </Select>
         <div>
-          <input
+          <Input
             value={lowerRange}
             type="number"
             name="lowerRange"
             placeholder="Price from"
             onChange={this.handleChange}
           />
-          <input
+          <Input
             value={higherRange}
             type="number"
             placeholder="Price to"
