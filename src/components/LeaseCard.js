@@ -20,10 +20,8 @@ const DetailsContainer = styled.div`
 `;
 export default ({
   engine_type,
-  engine_size,
   initial_rental,
-  transmission,
-  contract_term,
+  contract_type,
   months,
   name,
   model,
@@ -39,11 +37,12 @@ export default ({
           {name} {model}
         </h2>
         <p>{derivative}</p>
+        <p>{engine_type}</p>
       </div>
       <div>
         <h2>£{monthly_rental}/month</h2>
         <p>{initial_rental} initial</p>
-        <p>{contract_term}</p>
+        <p>{contract_type}</p>
       </div>
     </DetailsContainer>
   </CardContainer>
