@@ -12,6 +12,9 @@ const CarImage = styled.img`
 `;
 const DetailsContainer = styled.div`
   display: flex;
+  flex: 9;
+  padding: 10px;
+  justify-content: space-between;
 `;
 export default ({
   engine_type,
