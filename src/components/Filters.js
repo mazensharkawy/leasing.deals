@@ -1,4 +1,3 @@
-//(monthly rental range, engine type and transmission)
 import React, { Component } from "react";
 import _ from "lodash";
 import styled from "styled-components";
