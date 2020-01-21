@@ -3,8 +3,10 @@ import _ from "lodash";
 import React from "react";
 const CardContainer = styled.div`
   height: 150px;
+  max-width: 700px;
+  margin: 15px auto;
   display: flex;
-  margin: 15px;
+  border-radius: 5px;
   background-image: linear-gradient(to right, white, #e9f9ff);
 `;
 const CarImage = styled.img`

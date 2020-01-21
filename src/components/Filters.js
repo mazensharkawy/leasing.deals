@@ -3,8 +3,11 @@ import React, { Component } from "react";
 import _ from "lodash";
 import styled from "styled-components";
 const HeaderContainer = styled.div`
-  height: 150px;
+  height: 60px;
+  padding: 20px;
   display: flex;
+  justify-content: space-around;
+  background: #f5f5f5;
 `;
 class Filters extends Component {
   state = {};
